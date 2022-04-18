@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>books</title>
+</head>
+<body>
+<div>
+    <ul>
+        {% for i in book %}
+        <li>
+            <h2>
+                {{i.title}}
+            </h2>
+            <h3> {{i.author}}</h3>
+            <p>
+                {{i.description}}
+            </p>
+            <p> {{i.create_date}}</p>
+            <p> {{i.update_date}}</p>
+            <img src="{{i.image.url}}">
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+</body>
+</html>
