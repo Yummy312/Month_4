@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SHOWS detail</title>
+</head>
+<body>
+<div>
+  <h2> Название: {{show.title}}</h2>
+  <img src="{{ show.image.url }}">
+  <p>Описание: {{show.description}}</p>
+    <p>Автор: {{show.author}}</p>
+  <p>Жанр: {{show.genre}}</p>
+    <p>Год выпуска: {{show.year_of_issue}}</p>
+  <p>Дата-Создания: {{show.created_date}}</p>
+  <p>Дата-обновления: {{show.update_date}}</p>
+
+
+</div>
+<div>
+    <h2> Комментарии:</h2>
+    <ul>
+        {% for i in show.BookFeedBack.all %}
+        <li>
+            <p>{{i.text}}</p>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+</body>
+</html>
