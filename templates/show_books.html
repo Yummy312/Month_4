@@ -9,16 +9,17 @@
 <body>
 
 <style>
-    body{
-        background: #0575E6; /* fallback for old browsers */
-        background: -webkit-linear-gradient(to right, #021B79, #0575E6); /* Chrome 10-25, Safari 5.1-6 */
-        background: linear-gradient(to right, #021B79, #0575E6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    body {
+        background: #2193b0; /* fallback for old browsers */
+        background: -webkit-linear-gradient(to right, #6dd5ed, #2193b0); /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to right, #6dd5ed, #2193b0); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     }
     .__body{
        background: #1c92d2; /* fallback for old browsers */
        background: -webkit-linear-gradient(to right, #f2fcfe, #1c92d2); /* Chrome 10-25, Safari 5.1-6 */
        background: linear-gradient(to right, #f2fcfe, #1c92d2); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-       font-family: "Droid Sans Mono Slashed";
+       font-family: URW Chancery L, cursive;
+
  }
     .__image_book{
      height: 220px;
@@ -26,23 +27,53 @@
     }
 
     .__book{
-    height: 1000px;
-    width: 1000px;
-    margin-top: 20px;
+     max-width: 700px;
+     margin-top: -200px;
 }
-</style>
+    .book-box{
+        background: #1c92d2; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #f2fcfe, #1c92d2);
+  background: linear-gradient(to right, #f2fcfe, #1c92d2);
+  transform: translateY(-7px);
+  text-decoration: none;
+  display: inline-block;
+  width: 180px;
+  height: 30px;
+  line-height: 35px;
+  border-radius: 35px;
+  margin: 10px 20px;
+  font-family: URW Chancery L, cursive;
+  font-size: 12px;
+  text-transform: uppercase;
+  text-align: center;
+  letter-spacing: 3px;
+  font-weight: 600;
+  color: #524f4e;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, .1);
+  transition: .3s;
 
+    }
+</style>
+ <div>
+     <button type="button" class="book-box"><a href="/catalog/latest/">Последние</a> </button>
+      <br>
+      <button type="button" class="book-box"><a href="/catalog/romantic/">Романтика</a> </button>
+      <br>
+      <button type="button" class="book-box"><a href="/catalog/horror/">Хоррор</a> </button>
+      <br>
+      <button type="button" class="book-box"><a href="/catalog/fantastic/">Фантастика</a> </button>
+ </div>
 <div class="container __book">
-    <div class="row gy-5">
+    <div class="row gy-3">
         {% for book in show_book %}
-        <div class="col-3">
+        <div class="col-4">
             <div class="card" >
                 <img src="{{book.image.url}}" class="card-img-top __image_book" alt="...">
                 <div class="card-body  __body" >
             <h5 class="card-title">{{book.title}}</h5>
             <p class="card-text"> Автор: {{book.author}}</p>
             <p class="card-text">Жанр: {{book.genre}}</p>
-            <a href="{{book.id}}" class="btn btn-primary">Подробнее</a>
+            <a href="/catalog/{{book.id}}" class="btn btn-primary">Подробнее</a>
                 </div>
             </div>
         </div>
@@ -60,11 +91,4 @@
 
 
 
-<!--  <ul>-->
-<!--    {% for show in show_book %}-->
-<!--    <li>-->
-<!--      <h2><a href="{{ show.id}}/ "> {{show.title}}</a> <h3>Автор: {{show.author}}</h3> <h3>Жанр: {{show.genre}}</h3>  </h2>-->
 
-<!--    </li>-->
-<!--    {% endfor %}-->
-<!--  </ul>-->

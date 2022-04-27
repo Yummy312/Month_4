@@ -5,7 +5,56 @@
     <title> detail</title>
 </head>
 <body>
+<style>
+
+    body {
+        background: #2193b0; /* fallback for old browsers */
+        background: -webkit-linear-gradient(to right, #6dd5ed, #2193b0); /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to right, #6dd5ed, #2193b0); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    }
+
+    .self_catalog{
+  background: #1c92d2; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #f2fcfe, #1c92d2);
+  background: linear-gradient(to right, #f2fcfe, #1c92d2);
+  transform: translateY(-7px);
+  text-decoration: none;
+  display: inline-block;
+  width: 180px;
+  height: 30px;
+  line-height: 35px;
+  border-radius: 35px;
+  margin: 10px 20px;
+  font-family: URW Chancery L, cursive;
+  font-size: 12px;
+  text-transform: uppercase;
+  text-align: center;
+  letter-spacing: 3px;
+  font-weight: 600;
+  color: #524f4e;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, .1);
+  transition: .3s;
+
+    }
+    .Words-box {
+        color: black;
+        font-family: URW Chancery L, cursive;
+    }
+.size-comment{
+    background: #1c92d2; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #f2fcfe, #1c92d2);
+    background: linear-gradient(to right, #f2fcfe, #1c92d2);
+    font-family: URW Chancery L, cursive;
+    border: 4px solid #a9c358;
+    padding: 8px; /* Поля */
+    width: 50%; /* Ширина */
+    height: 250px; /* Высота */
+    box-sizing: border-box; /* Алгоритм расчёта ширины */
+    font-size: 17px;
+}
+</style>
 <div>
+    <div class="Words-box">
   <h2> Название: {{detail.title}}</h2>
   <img src="{{ detail.image.url }}">
   <p>Описание: {{detail.description}}</p>
@@ -14,19 +63,28 @@
     <p>Год выпуска: {{detail.year_of_issue}}</p>
   <p>Дата-Создания: {{detail.created_date}}</p>
   <p>Дата-обновления: {{detail.update_date}}</p>
-
+   </div>
 
 </div>
 <div>
-    <h2> Комментарии:</h2>
-    <ul>
+    <form action="handler.php">
+   <p><b class="Words-box">Комментарии:</b></p>
+
+    <textarea  class = "size-comment" >
         {% for i in detail.BookFeedBack.all %}
-        <li>
-            <p>{{i.text}}</p>
-        </li>
+            {{i.text}}
         {% endfor %}
-    </ul>
-    <a href="/add-book/"> Добавить книгу</a>
+   </textarea>
+
+  </form>
 </div>
+
+<footer>
+     <a href="/add-book/" class="self_catalog"> Добавить </a>
+     <br>
+  <a href="/catalog/{{ detail.id }}/update/ " class="self_catalog">Изменить </a>
+     <br>
+ <a href="/catalog/{{ detail.id }}/delete/" class="self_catalog">Удалить </a>
+</footer>
 </body>
 </html>
