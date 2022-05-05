@@ -1,18 +1,32 @@
 from django.urls import path
-from . import views
+from . import views, models
+from datetime import datetime, timedelta
+date = datetime.today() - timedelta(days=1)
 app_name = 'book'
 urlpatterns = [
-    path('books/', views.book_all, name='book_all'),
-    path('catalog/fantastic/', views.show_genre_fantastic, name="catalog_fantastic"),
-    path('catalog/romantic/', views.show_genre_romantic, name="catalog_romantic"),
-    path('catalog/horror/', views.show_genre_horror, name="catalog_horror"),
-    path('catalog/latest/', views.latest_date, name="catalog_latest"),
-    path('catalog/', views.book_show, name="book_show"),
-    path('catalog/<int:id>/', views.show_detail, name="show_detail"),
-    path('catalog/<int:id>/update/', views.update_book, name='catalog_update'),
-    path('catalog/<int:id>/delete/', views.book_delete, name='catalog_delete'),
-    path('add-book/', views.add_book, name='add_book'),
 
+    path('catalog/', views.Booklist.as_view(), name="catalog_all"),
 
+    path('catalog/latest/',
+         views.Booklist.as_view(queryset=models.BookShow.objects.filter(created_date__gt=date).order_by("-id")),
+         name='catalog_latest'),
+
+    path('catalog/horror/', views.Booklist.as_view(queryset=models.BookShow.objects.filter(genre="Horror").order_by("-id")),
+         name='catalog_horror'),
+
+    path('catalog/romantic/', views.Booklist.as_view(queryset=models.BookShow.objects.filter(genre="Romantic").order_by("-id")),
+         name='catalog_romantic'),
+
+    path('catalog/fantastic/',
+         views.Booklist.as_view(queryset=models.BookShow.objects.filter(genre="Fantastic").order_by("-id")),
+         name='catalog_fantastic'),
+
+    path('catalog/<int:id>/', views.BookDetail.as_view(), name="catalog_detail"),
+
+    path('add-book/', views.BookAdd.as_view(), name='add_book'),
+
+    path('catalog/<int:id>/update/', views.BookUpdate.as_view(), name='catalog_update'),
+
+    path('catalog/<int:id>/delete/', views.BookDelete.as_view(), name='catalog_delete'),
 ]
 

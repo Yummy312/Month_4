@@ -65,15 +65,15 @@
  </div>
 <div class="container __book">
     <div class="row gy-3">
-        {% for book in show_book %}
+        {% for book in object_list %}
         <div class="col-4">
             <div class="card" >
                 <img src="{{book.image.url}}" class="card-img-top __image_book" alt="...">
                 <div class="card-body  __body" >
-            <h5 class="card-title">{{book.title}}</h5>
-            <p class="card-text"> Автор: {{book.author}}</p>
-            <p class="card-text">Жанр: {{book.genre}}</p>
-            <a href="/catalog/{{book.id}}" class="btn btn-primary">Подробнее</a>
+                     <h5 class="card-title">{{book.title}}</h5>
+                     <p class="card-text"> Автор: {{book.author}}</p>
+                     <p class="card-text">Жанр: {{book.genre}}</p>
+                     <a href="/catalog/{{book.id}}" class="btn btn-primary">Подробнее</a>
                 </div>
             </div>
         </div>

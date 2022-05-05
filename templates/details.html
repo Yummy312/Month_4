@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -55,14 +56,14 @@
 </style>
 <div>
     <div class="Words-box">
-  <h2> Название: {{detail.title}}</h2>
-  <img src="{{ detail.image.url }}">
-  <p>Описание: {{detail.description}}</p>
-    <p>Автор: {{detail.author}}</p>
-  <p>Жанр: {{detail.genre}}</p>
-    <p>Год выпуска: {{detail.year_of_issue}}</p>
-  <p>Дата-Создания: {{detail.created_date}}</p>
-  <p>Дата-обновления: {{detail.update_date}}</p>
+  <h2> Название: {{object.title}}</h2>
+  <img src="{{ object.image.url }}">
+  <p>Описание: {{object.description}}</p>
+    <p>Автор: {{object.author}}</p>
+  <p>Жанр: {{object.genre}}</p>
+    <p>Год выпуска: {{object.year_of_issue}}</p>
+  <p>Дата-Создания: {{object.created_date}}</p>
+  <p>Дата-обновления: {{object.update_date}}</p>
    </div>
 
 </div>
@@ -71,7 +72,7 @@
    <p><b class="Words-box">Комментарии:</b></p>
 
     <textarea  class = "size-comment" >
-        {% for i in detail.BookFeedBack.all %}
+        {% for i in object.BookFeedBack.all %}
             {{i.text}}
         {% endfor %}
    </textarea>
@@ -82,9 +83,9 @@
 <footer>
      <a href="/add-book/" class="self_catalog"> Добавить </a>
      <br>
-  <a href="/catalog/{{ detail.id }}/update/ " class="self_catalog">Изменить </a>
+  <a href="/catalog/{{object.id }}/update/ " class="self_catalog">Изменить </a>
      <br>
- <a href="/catalog/{{ detail.id }}/delete/" class="self_catalog">Удалить </a>
+ <a href="/catalog/{{ object.id }}/delete/" class="self_catalog">Удалить </a>
 </footer>
 </body>
 </html>

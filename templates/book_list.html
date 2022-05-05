@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -7,7 +8,7 @@
 <body>
 <div>
     <ul>
-        {% for i in book %}
+        {% for i in object_list %}
         <li>
             <h2>
                 {{i.title}}
