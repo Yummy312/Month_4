@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Content-View</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}">
+</head>
+<body>
+<style>
+
+     body {
+         background-color: #141414;
+     }
+
+    .__image_type{
+         height: 220px;
+         object-fit: cover;
+    }
+
+     .__href{
+         background-color:#333;
+         max-width: 700px;
+         font-size: 18px
+
+     }
+
+     .size{
+         color: white;
+         font-size: 18px;
+         margin-outside: 11px;
+         font-family: URW Chancery L, cursive;
+     }
+
+    .look_this{
+         max-width: 700px;
+         margin-top: 0px;
+    }
+</style>
+
+<div>
+    <div class="container look_this">
+        <div class="row gy-4">
+            {% for i in object_list %}
+            <div class="col-4">
+                <div class="card __href" >
+                <img src="{{ i.image }}" class="card-img-top __image_type" alt="...">
+                    <div class="card-body size" >
+                         <h3 class="card-title size">{{i.title}}</h3>
+                         <a href="{{ i.url }}" class="btn btn-primary __href">Перейти</a>
+                    </div>
+                </div>
+        </div>
+        {% endfor %}
+   </div>
+</div>
+
+</body>
+</html>
