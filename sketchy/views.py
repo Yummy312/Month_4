@@ -25,3 +25,5 @@ class ContentView(generic.ListView):
 
     def get_queryset(self):
         return self.queryset
+
+

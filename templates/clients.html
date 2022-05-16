@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Clients</title>
+</head>
+<body>
+<div>
+    <ul>
+        {% for client in object_list %}
+        <li>
+            <h2>
+                {{ client.username }}
+            </h2>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+
+</body>
+</html>
